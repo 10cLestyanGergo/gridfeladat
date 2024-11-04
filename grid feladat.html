@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=!, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+        }
+        .grid-item{
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100px;
+            width: 100px;
+            background-color: orange;
+        }
+        .container{
+            display: grid;
+            grid-template-columns: repeat(3,100px);
+            grid-template-rows: repeat(3,100px);
+            gap: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container" id="szamsor">
+        <div class="grid-item">1</div>
+        <div class="grid-item">2</div>
+        <div class="grid-item">3</div>
+        <div class="grid-item">4</div>
+        <div class="grid-item">5</div>
+        <div class="grid-item">6</div>
+        <div class="grid-item">7</div>
+        <div class="grid-item">8</div>
+        <div class="grid-item">9</div>
+    </div>
+    <button type="button" onclick="keveres()" style="margin-top: 10px;">Keverés</button>
+</body>
+<script>
+    function keveres(){       
+    let elhasznalt = [];
+    let elemek = document.querySelectorAll('.grid-item'); // Minden cella kiválasztása
+
+    for (let i = 0; i < elemek.length; i++) {
+        let x;
+        do {
+            x = Math.floor(Math.random() * 9)+1; // 1-9 közötti szám generálása
+        } while (elhasznalt.includes(x)); // Ismételni, amíg új számot nem kapunk
+
+        elemek[i].innerText = x; // Az új szám beállítása
+        elhasznalt+=x; // Az új szám hozzáadása a használt számokhoz
+    }
+    }
+</script>
+</html>
